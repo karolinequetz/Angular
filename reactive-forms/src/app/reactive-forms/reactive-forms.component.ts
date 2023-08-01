@@ -9,14 +9,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ReactiveFormsComponent implements OnInit {
   public registerForm: FormGroup = this.formBuilder.group({
     firstName: ['', Validators.required],
-    lastName: [''],
+    lastName: ['', [Validators.required, Validators.minLength(5)]],
+    email: ['', [Validators.required, Validators.email]],
   });
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {}
 
   public submitForm() {
-    console.log(this.registerForm.value.firstName);
-    console.log(this.registerForm.value.lastName);
+    if (this.registerForm.valid) {
+      console.log(this.registerForm.value);
+      console.log(this.registerForm.value.firstName);
+      console.log(this.registerForm.value.lastName);
+    }
   }
 }

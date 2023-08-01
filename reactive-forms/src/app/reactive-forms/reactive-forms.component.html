@@ -11,11 +11,25 @@
   <label>
     Sobrenome:
     <input type="text" formControlName="lastName">
+    <span class="alert" *ngIf="registerForm.get('lastName')?.errors && (registerForm.get('lastName')?.touched || registerForm.get('lastName')?.dirty )">
+      Favor deve ter no mínimo {{registerForm.get('lastName')?.errors?.['minlength']?.['requiredLength']}} e você digitou {{registerForm.get('lastName')?.errors?.['minlength']?.['actualLength']}}
+    </span>
+  </label>
+  <br>
+  <br>
+
+  <label>
+    E-mail:
+    <input type="text" formControlName="email">
+
   </label>
 
 <p>  {{registerForm.get('firstName')?.errors|json}}</p>
 <p>  {{registerForm.get('firstName')?.touched|json}}</p>
 <p>  {{registerForm.get('firstName')?.dirty|json}}</p>
 
-<button>Enviar</button>
+<p>  {{registerForm.get('lastName')?.errors|json}}</p>
+<p>  {{registerForm.get('email')?.errors|json}}</p>
+
+<button [disabled]="registerForm.invalid">Enviar</button>
 </form>

@@ -1,0 +1,21 @@
+<form [formGroup]="registerForm" (ngSubmit)="submitForm()" >
+<label>
+  Nome:
+  <input type="text" formControlName="firstName">
+  <span class="alert" *ngIf="registerForm.get('firstName')?.errors && (registerForm.get('firstName')?.touched || registerForm.get('firstName')?.dirty )">
+    Favor adicionar o nome
+  </span>
+</label>
+  <br>
+  <br>
+  <label>
+    Sobrenome:
+    <input type="text" formControlName="lastName">
+  </label>
+
+<p>  {{registerForm.get('firstName')?.errors|json}}</p>
+<p>  {{registerForm.get('firstName')?.touched|json}}</p>
+<p>  {{registerForm.get('firstName')?.dirty|json}}</p>
+
+<button>Enviar</button>
+</form>

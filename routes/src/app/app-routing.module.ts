@@ -11,8 +11,14 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'sobre/:id/:username',
+    path: 'sobre',
     component: SobreComponent,
+    children: [
+      {
+        path: ':id/:username',
+        component: SobreComponent,
+      },
+    ],
   },
   {
     path: '404',

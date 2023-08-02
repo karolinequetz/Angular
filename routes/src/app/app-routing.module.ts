@@ -11,7 +11,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'sobre',
+    path: 'sobre/:id/username',
     component: SobreComponent,
   },
   {

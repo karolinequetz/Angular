@@ -27,7 +27,19 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'tteste-unitario app is running!'
+      'teste-unitario app is running!'
     );
+  });
+
+  it(`Testando função de soma()'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.soma(1, 1)).toEqual(2);
+  });
+
+  it(`Testando função de soma() dando valor errado'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.soma(1, 2)).not.toEqual(2);
   });
 });
